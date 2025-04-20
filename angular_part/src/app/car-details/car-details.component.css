@@ -1,209 +1,127 @@
-/* Main container */
 .car-details {
-  max-width: 1200px;
-  margin: 2rem auto;
   padding: 2rem;
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  max-width: 1200px;
+  margin: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Back button */
 .back-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(52, 152, 219, 0.1);
+  background: none;
   border: none;
-  color: #3498db;
+  color: #007BFF;
   font-size: 1rem;
-  font-weight: 500;
+  margin-bottom: 1rem;
   cursor: pointer;
-  margin-bottom: 2rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.back-button:hover {
-  background: rgba(52, 152, 219, 0.2);
-  transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.2);
-}
-
-/* Car info section */
 .car-info {
   display: flex;
-  gap: 3rem;
-  margin-top: 1.5rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .car-image {
-  width: 50%;
-  border-radius: 12px;
+  flex: 1 1 400px;
+  max-width: 500px;
+  width: 100%;
+  border-radius: 1rem;
   object-fit: cover;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.5s ease;
-}
-
-.car-image:hover {
-  transform: scale(1.02);
 }
 
 .details {
-  flex: 1;
-  padding: 0.5rem;
+  flex: 1 1 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
 }
 
-/* Description */
+.details h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
 .description {
-  font-size: 1.15rem;
-  line-height: 1.7;
-  color: #4a5568;
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid #edf2f7;
+  font-size: 1rem;
+  color: #555;
 }
 
-/* Specifications */
 .specs h2 {
-  color: #2d3748;
-  margin-bottom: 1.25rem;
-  font-size: 1.5rem;
-  font-weight: 600;
-  position: relative;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid #007BFF;
   display: inline-block;
-}
-
-.specs h2::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -8px;
-  width: 50px;
-  height: 3px;
-  background: #3498db;
-  border-radius: 3px;
+  padding-bottom: 4px;
 }
 
 .specs ul {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.5rem;
 }
 
 .specs li {
-  padding: 0.75rem;
-  background: #f8fafc;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  background-color: #f3f3f3;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
   font-size: 0.95rem;
-  transition: all 0.2s ease;
 }
 
-.specs li::before {
-  content: '•';
-  color: #3498db;
-  font-weight: bold;
-}
-
-.specs li:hover {
-  background: #edf2f7;
-  transform: translateX(4px);
-}
-
-/* Price section */
 .price {
-  font-size: 2.25rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: bold;
   color: #2ecc71;
-  margin: 2rem 0 1.5rem;
-  display: flex;
-  align-items: flex-end;
 }
 
-.price::before {
-  content: 'From';
+.booking-form {
+  margin-top: 1rem;
+}
+
+.booking-form h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+input[type="tel"] {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
   font-size: 1rem;
-  color: #718096;
-  margin-right: 0.75rem;
-  font-weight: 400;
 }
 
-.price::after {
-  content: '/day';
-  font-size: 1.25rem;
-  color: #a0aec0;
-  margin-left: 0.5rem;
-  font-weight: 400;
-}
-
-/* Book button */
 .book-button {
   width: 100%;
-  padding: 1.15rem;
-  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+  background-color: #27ae60;
   color: white;
   border: none;
-  border-radius: 8px;
-  font-size: 1.05rem;
-  font-weight: 500;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(46, 204, 113, 0.25);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.book-button:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(46, 204, 113, 0.35);
-  background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+  transition: background-color 0.3s ease;
 }
 
 .book-button:disabled {
-  background: #cbd5e0;
+  background-color: #aaa;
   cursor: not-allowed;
-  box-shadow: none;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-  .car-info {
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .car-image {
-    width: 100%;
-    max-height: 350px;
-  }
-
-  .specs ul {
-    grid-template-columns: 1fr;
-  }
-
-  .price {
-    font-size: 2rem;
-  }
+.book-button:hover:not(:disabled) {
+  background-color: #219150;
 }
 
-@media (max-width: 480px) {
-  .car-details {
-    padding: 1.5rem;
-  }
-
-  .back-button {
-    padding: 0.6rem 1.2rem;
-  }
-
-  .book-button {
-    padding: 1rem;
-  }
+.success-message {
+  margin-top: 1rem;
+  color: #2ecc71;
+  font-weight: bold;
 }
