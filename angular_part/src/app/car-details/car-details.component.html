@@ -1,0 +1,50 @@
+<div *ngIf="car" class="car-details">
+  <button (click)="navigateBack()" class="back-button">← Back to Cars</button>
+
+  <div class="car-info">
+    <img [src]="car.image" [alt]="car.brand + ' ' + car.model" class="car-image">
+
+    <div class="details">
+      <h1>{{ car.brand }} {{ car.model }}</h1>
+      <p class="description">{{ car.description }}</p>
+
+      <div class="specs">
+        <h2>Specifications:</h2>
+        <ul>
+          <li>{{ car.specifications.fuelType }}</li>
+          <li>{{ car.specifications.transmission }} transmission</li>
+          <li>{{ car.specifications.seats }} seats</li>
+          <li *ngFor="let feature of car.specifications.features">{{ feature }}</li>
+        </ul>
+      </div>
+
+      <div class="price">${{ car.price }}/day</div>
+
+      <div class="booking-form">
+        <h2>Book for 1 day</h2>
+        <div class="form-group">
+          <label for="phone">Your Phone Number</label>
+          <input
+            type="tel"
+            id="phone"
+            [(ngModel)]="phoneNumber"
+            placeholder="Enter your phone number"
+            required
+          >
+        </div>
+
+        <button
+          (click)="bookCar()"
+          [disabled]="!phoneNumber || isLoading"
+          class="book-button"
+        >
+          {{ isLoading ? 'Processing...' : 'Book Now' }}
+        </button>
+
+        <div *ngIf="isBookingSuccess" class="success-message">
+          Booking confirmed! SMS has been sent to your phone.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
