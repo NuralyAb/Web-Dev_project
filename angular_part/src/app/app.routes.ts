@@ -7,6 +7,7 @@ import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {CarDetailsComponent} from './car-details/car-details.component';
+import { AccountComponent } from './my-account/my-account.component';
 
 export const routes: Routes = [
   { path: 'about', component: AboutComponent },
@@ -15,6 +16,7 @@ export const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'account', component: AccountComponent },
   { path: '', redirectTo: '/about', pathMatch: 'full' },
   { path: '**', redirectTo: '/about' },
 ];

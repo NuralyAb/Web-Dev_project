@@ -1,0 +1,19 @@
+<div class="account-container" *ngIf="user">
+    <h2>My Account</h2>
+    <p><strong>Name:</strong> {{ user.name }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+  
+    <div *ngIf="user.rentalHistory && user.rentalHistory.length > 0">
+      <h3>Rental History</h3>
+      <ul>
+        <li *ngFor="let rental of user.rentalHistory">
+          {{ rental.car }} — {{ rental.date }}
+        </li>
+      </ul>
+    </div>
+  
+    <div *ngIf="!user.rentalHistory || user.rentalHistory.length === 0">
+      <p>No rental history available.</p>
+    </div>
+  </div>
+  

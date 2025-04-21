@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../services/auth.service'; 
+
 
 @Component({
   selector: 'app-login',
@@ -16,12 +18,19 @@ export class LoginComponent {
     password: ''
   };
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   onSubmit() {
     console.log('Login attempt:', this.credentials);
-    // Здесь будет логика авторизации
-    // После успешного входа:
+  
+  
+    const mockUserData = {
+      name: 'Иван Иванов',
+      email: this.credentials.email
+    };
+  
+    this.authService.login(mockUserData);
     this.router.navigate(['/cars']);
   }
+  
 }
