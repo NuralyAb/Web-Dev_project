@@ -1,69 +1,39 @@
 import { Injectable } from '@angular/core';
-import { Car } from '../models/car.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+export interface Car {
+  id: number;
+  name: string;
+  description: string;
+  price_per_day: string;
+  image?: string;
+  specifications: CarSpecifications;
+  is_available: boolean;
+}
+
+export interface CarSpecifications {
+  engine: string;
+  fuelType?: string;
+  transmission?: string;
+  seats?: number;
+  features?: string[];
+}
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarService {
-  private cars: Car[] = [
-    {
-      id: 1,
-      model: 'Model 3',
-      brand: 'Tesla',
-      price: 100,
-      image: 'https://avatars.mds.yandex.net/i?id=0e511dc9718f0fa1da021da63e09f5f926507b85-4599704-images-thumbs&n=13',
-      description: 'Electric car with autopilot',
-      specifications: {
-        fuelType: 'Electric',
-        transmission: 'Automatic',
-        seats: 5,
-        features: ['Autopilot', 'Premium Sound System']
-      }
-    },
-    {
-      id: 2,
-      model: '3 Series',
-      brand: 'BMW',
-      price: 120,
-      image: 'https://avatars.mds.yandex.net/i?id=b08df3a8448817365731c1ca2c61ee9188401d83-5889153-images-thumbs&n=13',
-      description: 'Luxury sedan with premium features',
-      specifications: {
-        fuelType: 'Gasoline',
-        transmission: 'Automatic',
-        seats: 5,
-        features: ['Sport Mode', 'Heated Seats']
-      }
-    },
-    {
-      id: 3,
-      model: 'C-Class',
-      brand: 'Mercedes',
-      price: 130,
-      image: 'https://avatars.mds.yandex.net/i?id=9172c0ae593bc3894f8c7298fccc89347967f023-5236410-images-thumbs&n=13',
-      description: 'Elegant and comfortable sedan',
-      specifications: {
-        fuelType: 'Gasoline',
-        transmission: 'Automatic',
-        seats: 5,
-        features: ['Ambient Lighting', 'Premium Package']
-      }
-    }
-  ];
+  private apiUrl = 'http://127.0.0.1:8000/api/cars/';
 
-  getAllCars(): Car[] {
-    return this.cars;
+  constructor(private http: HttpClient) {}
+
+  getCars(): Observable<Car[]> {
+    return this.http.get<Car[]>(this.apiUrl);
   }
 
-  getCarById(id: number): Car | undefined {
-    return this.cars.find(car => car.id === id);
-  }
-
-
-  bookCar(carId: number, phoneNumber: string): Promise<boolean> {
-    return new Promise((resolve) => {
-      // Здесь будет реальный вызов API
-      console.log(`Booking car ${carId} for phone ${phoneNumber}`);
-      setTimeout(() => resolve(true), 1000); // Имитация задержки сети
-    });
+  getCar(id: number): Observable<Car> {
+    return this.http.get<Car>(`${this.apiUrl}${id}/`);
   }
 }

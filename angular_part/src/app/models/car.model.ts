@@ -1,3 +1,10 @@
+export interface Specifications {
+  fuelType: string;
+  transmission: string;
+  seats: number;
+  features: string[];
+}
+
 export interface Car {
   id: number;
   model: string;
@@ -5,10 +12,5 @@ export interface Car {
   price: number;
   image: string;
   description: string;
-  specifications: {
-    fuelType: string;
-    transmission: string;
-    seats: number;
-    features: string[];
-  };
+  specifications: Specifications;
 }
