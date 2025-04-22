@@ -20,30 +20,16 @@
 
       <div class="price">${{ car.price }}/day</div>
 
-      <div class="booking-form">
-        <h2>Book for 1 day</h2>
-        <div class="form-group">
-          <label for="phone">Your Phone Number</label>
-          <input
-            type="tel"
-            id="phone"
-            [(ngModel)]="phoneNumber"
-            placeholder="Enter your phone number"
-            required
-          >
-        </div>
+      <button
+        (click)="bookCar()"
+        [disabled]="isLoading"
+        class="book-button"
+      >
+        {{ isLoading ? 'Processing...' : 'Book Now' }}
+      </button>
 
-        <button
-          (click)="bookCar()"
-          [disabled]="!phoneNumber || isLoading"
-          class="book-button"
-        >
-          {{ isLoading ? 'Processing...' : 'Book Now' }}
-        </button>
-
-        <div *ngIf="isBookingSuccess" class="success-message">
-          Booking confirmed! SMS has been sent to your phone.
-        </div>
+      <div *ngIf="isBookingSuccess" class="success-message">
+        Booking confirmed! Your car is successfully booked.
       </div>
     </div>
   </div>

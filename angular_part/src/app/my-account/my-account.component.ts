@@ -1,18 +1,37 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AuthService } from '../services/auth.service'; 
+import {NgForOf} from '@angular/common';
+
+interface Booking {
+  brand: string;
+  model: string;
+  date: string;
+}
 
 @Component({
-  selector: 'app-account',
-  standalone: true,
-  imports: [CommonModule],
+  selector: 'app-my-account',
   templateUrl: './my-account.component.html',
+  imports: [
+    NgForOf
+  ],
   styleUrls: ['./my-account.component.css']
 })
-export class AccountComponent {
-  user: any;
+export class MyAccountComponent {
+  user = {
+    name: 'John Doe',
+    email: 'john@example.com',
+    phone: '+7 777 777 77 77'
+  };
 
-  constructor(private authService: AuthService) {
-    this.user = this.authService.getUserInfo();
-  }
+  bookings: Booking[] = [
+    {
+      brand: 'Tesla',
+      model: 'Model 3',
+      date: '15.04.2025'
+    },
+    {
+      brand: 'BMW',
+      model: '3 Series',
+      date: '20.03.2025'
+    }
+  ];
 }

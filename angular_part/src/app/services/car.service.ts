@@ -25,7 +25,7 @@ export class CarService {
       model: '3 Series',
       brand: 'BMW',
       price: 120,
-      image: 'https://avatars.mds.yandex.net/i?id=b08df3a8448817365731c1ca2c61ee9188401d83-5889153-images-thumbs&n=13',
+      image: 'https://avatars.mds.yandex.net/i?id=9172c0ae593bc3894f8c7298fccc89347967f023-5236410-images-thumbs&n=13',
       description: 'Luxury sedan with premium features',
       specifications: {
         fuelType: 'Gasoline',
@@ -39,7 +39,7 @@ export class CarService {
       model: 'C-Class',
       brand: 'Mercedes',
       price: 130,
-      image: 'https://avatars.mds.yandex.net/i?id=9172c0ae593bc3894f8c7298fccc89347967f023-5236410-images-thumbs&n=13',
+      image: 'https://avatars.mds.yandex.net/i?id=b08df3a8448817365731c1ca2c61ee9188401d83-5889153-images-thumbs&n=13',
       description: 'Elegant and comfortable sedan',
       specifications: {
         fuelType: 'Gasoline',
@@ -58,12 +58,12 @@ export class CarService {
     return this.cars.find(car => car.id === id);
   }
 
-
-  bookCar(carId: number, phoneNumber: string): Promise<boolean> {
+  bookCar(carId: number): Promise<boolean> {
     return new Promise((resolve) => {
-      // Здесь будет реальный вызов API
-      console.log(`Booking car ${carId} for phone ${phoneNumber}`);
-      setTimeout(() => resolve(true), 1000); // Имитация задержки сети
+      setTimeout(() => {
+        console.log(`Car ${carId} booked successfully`);
+        resolve(true);
+      }, 1000);
     });
   }
 }

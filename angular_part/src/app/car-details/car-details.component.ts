@@ -14,7 +14,6 @@ import { Car } from '../models/car.model';
 })
 export class CarDetailsComponent implements OnInit {
   car: Car | undefined;
-  phoneNumber: string = '';
   isBookingSuccess: boolean = false;
   isLoading: boolean = false;
 
@@ -36,12 +35,24 @@ export class CarDetailsComponent implements OnInit {
   }
 
   bookCar(): void {
-    if (!this.car || !this.phoneNumber) return;
+    if (!this.car) return;
 
     this.isLoading = true;
-    this.carService.bookCar(this.car.id, this.phoneNumber)
+    this.isBookingSuccess = false;
+
+    this.carService.bookCar(this.car.id)
       .then(success => {
         this.isBookingSuccess = success;
+        this.isLoading = false;
+
+        if (success) {
+          setTimeout(() => {
+            this.isBookingSuccess = false;
+          }, 5000);
+        }
+      })
+      .catch(error => {
+        console.error('Booking failed:', error);
         this.isLoading = false;
       });
   }
@@ -49,6 +60,4 @@ export class CarDetailsComponent implements OnInit {
   navigateBack(): void {
     this.router.navigate(['/cars']);
   }
-
-
 }

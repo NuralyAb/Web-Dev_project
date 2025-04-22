@@ -1,19 +1,40 @@
-<div class="account-container" *ngIf="user">
-    <h2>My Account</h2>
-    <p><strong>Name:</strong> {{ user.name }}</p>
-    <p><strong>Email:</strong> {{ user.email }}</p>
-  
-    <div *ngIf="user.rentalHistory && user.rentalHistory.length > 0">
-      <h3>Rental History</h3>
-      <ul>
-        <li *ngFor="let rental of user.rentalHistory">
-          {{ rental.car }} — {{ rental.date }}
-        </li>
-      </ul>
-    </div>
-  
-    <div *ngIf="!user.rentalHistory || user.rentalHistory.length === 0">
-      <p>No rental history available.</p>
+<div class="account-container">
+  <h1>My Account</h1>
+
+  <div class="profile-section">
+    <h2>{{ user.name }}</h2>
+
+    <div class="personal-info">
+      <h3>Personal Information</h3>
+      <div class="info-item">
+        <span class="label">Name:</span>
+        <span class="value">{{ user.name }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Email:</span>
+        <span class="value">{{ user.email }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Phone Number:</span>
+        <span class="value">{{ user.phone }}</span>
+      </div>
     </div>
   </div>
-  
+
+  <div class="divider"></div>
+
+  <div class="booking-history">
+    <h3>Booking History</h3>
+
+    <div *ngFor="let booking of bookings" class="booking-item">
+      <div class="booking-header">
+        <span class="car-brand">{{ booking.brand }}</span>
+        <span class="car-model">{{ booking.model }}</span>
+      </div>
+      <div class="booking-details">
+        <span class="car-name">{{ booking.brand }} {{ booking.model }}</span>
+        <span class="booking-date">Booked on: {{ booking.date }}</span>
+      </div>
+    </div>
+  </div>
+</div>

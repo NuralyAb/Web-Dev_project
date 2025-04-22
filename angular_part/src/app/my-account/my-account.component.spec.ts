@@ -1,23 +1,30 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-import { AccountComponent } from './my-account.component';
+@Component({
+  selector: 'app-my-account',
+  standalone: true,
+  imports: [CommonModule], // Добавляем CommonModule для *ngFor
+  templateUrl: './my-account.component.html',
+  styleUrls: ['./my-account.component.css']
+})
+export class MyAccountComponent {
+  user = {
+    name: 'John Doe',
+    email: 'john@example.com',
+    phone: '+1 (555) 123-4567'
+  };
 
-describe('MyAccountComponent', () => {
-  let component: AccountComponent;
-  let fixture: ComponentFixture<AccountComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [AccountComponent]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(AccountComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  bookings = [
+    {
+      brand: 'Tesla',
+      model: 'Model 3',
+      date: '15.04.2025'
+    },
+    {
+      brand: 'BMW',
+      model: '3 Series',
+      date: '20.03.2025'
+    }
+  ];
+}
